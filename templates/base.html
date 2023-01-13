@@ -1,0 +1,69 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gudang antares</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.46.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Electrolize&display=swap");
+    </style>
+    <style>
+      body {
+        font-family: "Electrolize", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="" onload="startTime()">
+    {%block content%} {%endblock%}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+      // mengambil elemen form dan input
+      var input = document.getElementById('input-barcode');
+
+      function startTime() {
+        const today = new Date();
+        let d = today.getDay();
+        let h = today.getHours();
+        let m = today.getMinutes();
+        let s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById("time").innerHTML = h + ":" + m + ":" + s;
+        setTimeout(startTime, 1000);
+      }
+
+      function checkTime(i) {
+        if (i < 10) {
+          i = "0" + i;
+        }
+        return i;
+      }
+
+      
+
+      // menambahkan event change pada input
+      input.addEventListener('change', function() {
+        // mengirimkan form saat event change terjadi
+        form.submit();
+
+      })
+
+      
+    </script>
+  </body>
+</html>
